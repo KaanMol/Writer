@@ -7,25 +7,22 @@ import { Wrapper } from "./Wrapper";
 export function Editor(props: any) {
 	// const [components, setComponent] = useRecoilState(textState);
 	const components = editorStore;
-	function onKeyDown(e: any) {
+	function onKeyUp(e: any) {
 		const id =
 			window.getSelection()?.anchorNode?.parentElement?.parentElement?.id;
 		for (let i = 0; i < components.components.length; i++) {
 			if (components.components[i].id === id) {
-				// TODO: Fix this hack
-				setTimeout(() => {
-					const newValue =
-						window.getSelection()?.anchorNode?.parentElement
-							?.innerText;
-					components.components[i].api.setValue(newValue);
-				}, 0);
+				const newValue =
+					window.getSelection()?.anchorNode?.parentElement
+						?.innerText;
+				components.components[i].api.setValue(newValue);
 			}
 		}
 	}
 
 	// TODO: Clean this up, this is a hack
 	return (
-		<div contentEditable="true" onKeyDown={onKeyDown}>
+		<div contentEditable="true" onKeyUp={onKeyUp}>
 			{components.components.map((component) => (
 				<Wrapper key={component.id} id={component.id}>
 					{React.createElement(
