@@ -1,13 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Editor } from './Editor';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Editor } from "./Editor";
+import { RecoilRoot } from "recoil";
 
 function App() {
 	return (
-		<div className="App">
-			<Editor />
-		</div>
+		<RecoilRoot>
+			<div className="App">
+				<Editor />
+			</div>
+		</RecoilRoot>
 	);
 }
 
