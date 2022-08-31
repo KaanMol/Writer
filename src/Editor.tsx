@@ -15,7 +15,7 @@ export function Editor(props: any) {
 				const newValue =
 					window.getSelection()?.anchorNode?.parentElement
 						?.innerText;
-				components.components[i].api.setValue(newValue);
+				components.components[i].api.setValue(newValue as any);
 			}
 		}
 	}
@@ -26,7 +26,7 @@ export function Editor(props: any) {
 			{components.components.map((component) => (
 				<Wrapper key={component.id} id={component.id}>
 					{React.createElement(
-						component.component,
+						component.component as any,
 						{
 							api: component.api,
 						},
