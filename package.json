@@ -19,6 +19,7 @@
     "react-sortablejs": "^6.1.4",
     "react-syntax-highlighter": "^15.5.0",
     "recoil": "^0.7.5",
+    "sass": "^1.54.7",
     "sortablejs": "^1.15.0",
     "typescript": "^4.8.2",
     "web-vitals": "^2.1.4"
