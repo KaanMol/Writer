@@ -79,7 +79,7 @@ export function Wrapper(props: { children: JSX.Element; id: string; index: numbe
     return (
         <>
             <div className={styles.wrapper} id={props.id}>
-                <div className={styles.actions}>
+                <div className={styles.actions} contentEditable="false">
                     <div className={styles.spawner}>
                         <Icon icon="add" />
                     </div>
