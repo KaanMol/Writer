@@ -13,8 +13,7 @@ export function Editor(props: any) {
 		for (let i = 0; i < components.components.length; i++) {
 			if (components.components[i].id === id) {
 				const newValue =
-					window.getSelection()?.anchorNode?.parentElement
-						?.innerText;
+					window.getSelection()?.anchorNode?.parentElement?.innerText;
 				components.components[i].api.setValue(newValue as any);
 			}
 		}

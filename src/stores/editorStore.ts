@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { CheckboxComponent } from "../component/CheckboxComponent";
 import { CodeComponent } from "../component/CodeComponent";
 import { H1Component } from "../component/H1Component";
 import { ImageComponent } from "../component/ImageComponent";
@@ -18,8 +19,13 @@ export const editorStore = {
         },
         {
             id: "2",
+            component: CheckboxComponent,
+            api: new CoreAPI("2", { checked: true, text: "Do the wash" })
+        },
+        {
+            id: "3",
             component: ImageComponent,
-            api: new CoreAPI("2", { src: "https://motornl-verzekering.nl/wp-content/uploads/2020/07/08-2020_KTM_-Super_Duke_R-1024x683.jpg" })
+            api: new CoreAPI("3", { src: "https://motornl-verzekering.nl/wp-content/uploads/2020/07/08-2020_KTM_-Super_Duke_R-1024x683.jpg" })
         },
     ]
 }
