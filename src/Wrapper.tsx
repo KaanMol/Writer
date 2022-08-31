@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { CoreAPI } from "./core";
 import { useDrag, useDrop, XYCoord } from "react-dnd";
+import { Icon } from "./Icon";
 
 interface DragItem {
     index: number;
@@ -75,8 +76,13 @@ export function Wrapper(props: { children: JSX.Element; id: string; index: numbe
     drag(drop(ref));
 
     return (
-        <div ref={ref} className="wrapper" id={props.id}>
-            {props.children}
-        </div>
+        <>
+            <div className="actions">
+                <Icon icon="drag_indicator"></Icon>
+            </div>
+            <div ref={ref} className="wrapper" id={props.id}>
+                {props.children}
+            </div>
+        </>
     );
 }
