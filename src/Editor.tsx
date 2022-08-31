@@ -1,6 +1,5 @@
-import { DndContext } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
 import React, { useState } from "react";
+import { ReactSortable } from "react-sortablejs";
 import { useRecoilState } from "recoil";
 import { CoreAPI } from "./core";
 import { componentStore } from "./stores/componentStore";
@@ -58,22 +57,20 @@ export function Editor(props: any) {
 		<>
 			<button onClick={load}>Load</button>
 			<button onClick={save}>Save</button>
-			<div contentEditable="true" onKeyUp={onKeyUp}>
-				<DndContext>
-					<SortableContext items={components}>
-						{components.map((component) => (
-							<Wrapper key={component.id} id={component.id}>
-								{React.createElement(
-									component.component as any,
-									{
-										api: component.api,
-									},
-									null
-								)}
-							</Wrapper>
-						))}
-					</SortableContext>
-				</DndContext>
+			<div onKeyUp={onKeyUp}>
+				<ReactSortable list={components} setList={setComponents}>
+					{components.map((component) => (
+						<Wrapper key={component.id} id={component.id}>
+							{React.createElement(
+								component.component as any,
+								{
+									api: component.api,
+								},
+								null
+							)}
+						</Wrapper>
+					))}
+				</ReactSortable>
 			</div>
 		</>
 	);
