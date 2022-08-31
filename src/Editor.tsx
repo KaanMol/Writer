@@ -1,3 +1,5 @@
+import { DndContext } from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { CoreAPI } from "./core";
@@ -35,12 +37,7 @@ export function Editor(props: any) {
 		});
 
 		editorStore.components = loadedComponents;
-
-		//TODO: Fix this hack to force a re-render
-		setComponents([]);
-		setTimeout(() => {
-			setComponents(loadedComponents);
-		}, 0);
+		setComponents(loadedComponents);
 	};
 
 	const save = () => {
@@ -62,17 +59,21 @@ export function Editor(props: any) {
 			<button onClick={load}>Load</button>
 			<button onClick={save}>Save</button>
 			<div contentEditable="true" onKeyUp={onKeyUp}>
-				{components.map((component) => (
-					<Wrapper key={component.id} id={component.id}>
-						{React.createElement(
-							component.component as any,
-							{
-								api: component.api,
-							},
-							null
-						)}
-					</Wrapper>
-				))}
+				<DndContext>
+					<SortableContext items={components}>
+						{components.map((component) => (
+							<Wrapper key={component.id} id={component.id}>
+								{React.createElement(
+									component.component as any,
+									{
+										api: component.api,
+									},
+									null
+								)}
+							</Wrapper>
+						))}
+					</SortableContext>
+				</DndContext>
 			</div>
 		</>
 	);
