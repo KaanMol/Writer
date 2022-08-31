@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CoreAPI } from "../core";
 
-export function H1Component(props: { api: CoreAPI }) {
+export function H1Component(props: { api: CoreAPI<string> }) {
 	const [text, setText] = useState(props.api.value);
 
 	props.api.listeners.onValueChanged = (newValue: any) => {
