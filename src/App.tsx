@@ -1,19 +1,20 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.scss";
 import { Editor } from "./Editor";
-import { RecoilRoot } from "recoil";
-
 import "material-icons/iconfont/material-icons.css";
+import { Documents } from "./Documents";
+import { Route, Routes } from "react-router-dom";
+import { DocumentCreator } from "./DocumentCreator";
 
 function App() {
-    return (
-        <RecoilRoot>
-            <div className="App">
-                <Editor />
-            </div>
-        </RecoilRoot>
-    );
+	return (
+		<div className="App">
+			<Documents />
+			<Routes>
+				<Route path="/" element={<DocumentCreator />} />
+				<Route path="/:id" element={<Editor />} />
+			</Routes>
+		</div>
+	);
 }
 
 export default App;
