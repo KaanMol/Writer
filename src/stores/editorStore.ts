@@ -4,8 +4,15 @@ import { CodeComponent } from "../component/CodeComponent";
 import { H1Component } from "../component/H1Component";
 import { ImageComponent } from "../component/ImageComponent";
 import { CoreAPI } from "../core";
+import { componentStore } from "./componentStore";
 
-export const editorStore = {
+export const editorStore: {
+    components: {
+        id: string,
+        component: typeof componentStore[number],
+        api: CoreAPI<any>
+    }[]
+} = {
     components: [
         {
             id: "0",

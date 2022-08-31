@@ -16,7 +16,7 @@ export class CoreAPI<T> {
 
     public setValue(newValue: T) {
         console.log(newValue)
-        // this.value = newValue;
+        this.value = newValue;
         this.listeners.onValueChanged(newValue);
     }
 };
