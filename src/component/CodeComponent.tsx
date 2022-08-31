@@ -13,10 +13,13 @@ export function CodeComponent(props: {
 			<input
 				contentEditable="false"
 				placeholder="Language"
+				value={language}
 				onChange={(e) => setLanguage(e.target.value)}
 			/>
 			<input
 				contentEditable="false"
+				placeholder="Code"
+				value={code}
 				onChange={(e) => setCode(e.target.value)}
 			/>
 
