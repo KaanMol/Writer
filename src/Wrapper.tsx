@@ -80,10 +80,10 @@ export function Wrapper(props: { children: JSX.Element; id: string; index: numbe
         <>
             <div className={styles.wrapper} id={props.id}>
                 <div className={styles.actions}>
-                    <div className={styles.spawner} ref={ref}>
+                    <div className={styles.spawner}>
                         <Icon icon="add" />
                     </div>
-                    <div className={styles.grabber}>
+                    <div className={styles.grabber} ref={ref}>
                         <Icon icon="drag_indicator"></Icon>
                     </div>
                 </div>
