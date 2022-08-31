@@ -37,7 +37,10 @@ export function Editor(props: any) {
 		});
 
 		editorStore.components = loadedComponents;
-		setComponents(loadedComponents);
+		setComponents([]);
+		setTimeout(() => {
+			setComponents(loadedComponents);
+		}, 0);
 	};
 
 	const save = () => {

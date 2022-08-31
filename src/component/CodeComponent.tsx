@@ -8,19 +8,31 @@ export function CodeComponent(props: {
 	const [code, setCode] = useState(props.api.value.code);
 	const [language, setLanguage] = useState(props.api.value.language);
 
+	function onCodeChange(e: any) {
+		const newValue = e.target.value;
+		props.api.setValue({ language: language, code: newValue });
+		setCode(newValue);
+	}
+
+	function onLanguageChange(e: any) {
+		const newValue = e.target.value;
+		props.api.setValue({ language: newValue, code: code });
+		setLanguage(newValue);
+	}
+
 	return (
 		<>
 			<input
 				contentEditable="false"
 				placeholder="Language"
 				value={language}
-				onChange={(e) => setLanguage(e.target.value)}
+				onChange={onLanguageChange}
 			/>
 			<input
 				contentEditable="false"
 				placeholder="Code"
 				value={code}
-				onChange={(e) => setCode(e.target.value)}
+				onChange={onCodeChange}
 			/>
 
 			<SyntaxHighlighter contentEditable="false" language={language}>
