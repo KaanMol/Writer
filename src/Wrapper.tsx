@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { CoreAPI } from "./core";
 import { useDrag, useDrop, XYCoord } from "react-dnd";
 import { Icon } from "./Icon";
+import styles from "./styles/grabber.module.scss";
 
 interface DragItem {
     index: number;
@@ -77,11 +78,16 @@ export function Wrapper(props: { children: JSX.Element; id: string; index: numbe
 
     return (
         <>
-            <div className="actions">
-                <Icon icon="drag_indicator"></Icon>
-            </div>
-            <div ref={ref} className="wrapper" id={props.id}>
-                {props.children}
+            <div ref={ref} className={styles.wrapper} id={props.id}>
+                <div className={styles.actions}>
+                    <div className={styles.spawner}>
+                        <Icon icon="add" />
+                    </div>
+                    <div className={styles.grabber}>
+                        <Icon icon="drag_indicator"></Icon>
+                    </div>
+                </div>
+                <div>{props.children}</div>
             </div>
         </>
     );

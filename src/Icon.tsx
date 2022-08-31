@@ -1,3 +1,5 @@
+import styles from "./styles/icons.module.scss";
+
 export function Icon(props: { icon: string }) {
-    return <span className="material-icons-outlined">{props.icon}</span>;
+    return <i className={"material-icons-outlined " + styles.icon}>{props.icon}</i>;
 }
